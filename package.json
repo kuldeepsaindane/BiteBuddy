@@ -1,0 +1,30 @@
+{
+  "name": "bitebuddy",
+  "version": "1.0.0",
+  "description": "Food Delivery",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShellyCS/BiteBuddy.git"
+  },
+  "keywords": [
+    "Food"
+  ],
+  "author": "Saily",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShellyCS/BiteBuddy/issues"
+  },
+  "homepage": "https://github.com/ShellyCS/BiteBuddy#readme",
+  "devDependencies": {
+    "parcel": "^2.13.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
