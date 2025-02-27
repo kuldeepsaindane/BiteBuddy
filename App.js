@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
-import Header from "./components/Header/Header";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Body from "./components/Body/Body";
+import Header from "./components/Header/Header";
+import ReserveTable from "./components/ReserveTable/ReserveTable";
 
 const AppLayout = () => {
   return (
-    <div className="app">
-      {<Header />}
-      {<Body />}
-    </div>
+    <Router>
+      <div className="app">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Body />} />
+          <Route path="/Body" element={<Body />} />
+          <Route path="/reserve" element={<ReserveTable />} />
+        </Routes>
+      </div>
+    </Router>
   );
 };
 
