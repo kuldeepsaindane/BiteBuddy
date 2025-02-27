@@ -13,11 +13,11 @@ const RestaurantCard = (props) => {
 
   return (
     <div
-      className=" m-1.5 p-1.5 w-2xs hover:shadow-2xl hover:scale-105 transition-transform duration-300 cursor-pointer"
+      className=" m-1.5 p-1.5 w-2xs hover:shadow-2xl cursor-pointer"
       style={{ backgroundColor: "#f0f0f0" }}
     >
       <img
-        className="w-full h-40 object-cover rounded-md"
+        className="w-full h-40 object-cover rounded-md hover:scale-105 transition-transform duration-300"
         alt="res-logo"
         src={
           "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
