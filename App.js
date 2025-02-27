@@ -1,17 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Header from "./components/Header/Header";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Body from "./components/Body/Body";
-import Footer from "./components/Footer/Footer";
-import AboutUs from "./components/AboutUs/AboutUs";
+import Header from "./components/Header/Header";
+import ReserveTable from "./components/ReserveTable/ReserveTable";
 
 const AppLayout = () => {
   return (
-    <div className="app">
-      {<Header />}
-      {<Body />}
-      {<Footer />}
-    </div>
+    <Router>
+      <div className="app">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Body />} />
+          <Route path="/Body" element={<Body />} />
+          <Route path="/reserve" element={<ReserveTable />} />
+        </Routes>
+      </div>
+    </Router>
   );
 };
 
