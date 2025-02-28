@@ -4,6 +4,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Body from "./components/Body/Body";
 import Header from "./components/Header/Header";
 import ReserveTable from "./components/ReserveTable/ReserveTable";
+import Login from "./src/pages/Login";
 
 const AppLayout = () => {
   return (
@@ -14,6 +15,7 @@ const AppLayout = () => {
           <Route path="/" element={<Body />} />
           <Route path="/Body" element={<Body />} />
           <Route path="/reserve" element={<ReserveTable />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </Router>
