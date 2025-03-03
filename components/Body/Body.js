@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import RestaurantCard from "../restaurant/RestaurantCard";
-import appBanner from "../../assets/appBanner.jpg";
 import { topMeals } from "./topMeal";
 import "./Body.css";
 

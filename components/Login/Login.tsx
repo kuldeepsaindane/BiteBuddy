@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 export default function Login() {
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    fullName: '',
-    type: 'diner'
+    email: "",
+    password: "",
+    fullName: "",
+    type: "diner",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
     <div className="min-h-[calc(100vh-4rem)] bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          {isLogin ? 'Sign in to your account' : 'Create a new account'}
+          {isLogin ? "Sign in to your account" : "Create a new account"}
         </h2>
       </div>
 
@@ -27,7 +27,9 @@ export default function Login() {
           <form className="space-y-6">
             {!isLogin && (
               <div>
-                <label className="block text-sm font-medium text-gray-700">Full Name</label>
+                <label className="block text-sm font-medium text-gray-700">
+                  Full Name
+                </label>
                 <input
                   name="fullName"
                   type="text"
@@ -40,7 +42,9 @@ export default function Login() {
             )}
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">Email address</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Email address
+              </label>
               <input
                 name="email"
                 type="email"
@@ -52,7 +56,9 @@ export default function Login() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">Password</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Password
+              </label>
               <input
                 name="password"
                 type="password"
@@ -65,7 +71,9 @@ export default function Login() {
 
             {!isLogin && (
               <div>
-                <label className="block text-sm font-medium text-gray-700">Account Type</label>
+                <label className="block text-sm font-medium text-gray-700">
+                  Account Type
+                </label>
                 <select
                   name="type"
                   value={formData.type}
@@ -83,7 +91,7 @@ export default function Login() {
                 type="submit"
                 className="w-full flex justify-center py-2 px-4 border border-black rounded-md shadow-sm text-sm font-medium text-black bg-yellow-500 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
               >
-                {isLogin ? 'Sign in' : 'Sign up'}
+                {isLogin ? "Sign in" : "Sign up"}
               </button>
             </div>
           </form>
@@ -93,7 +101,9 @@ export default function Login() {
               onClick={() => setIsLogin(!isLogin)}
               className="w-full text-center text-sm text-yellow-500 hover:text-yellow-600"
             >
-              {isLogin ? "Don't have an account? Sign up" : "Already have an account? Sign in"}
+              {isLogin
+                ? "Don't have an account? Sign up"
+                : "Already have an account? Sign in"}
             </button>
           </div>
         </div>
