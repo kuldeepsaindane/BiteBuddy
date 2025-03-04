@@ -5,6 +5,7 @@ import Body from "./components/Body/Body";
 import Header from "./components/Header/Header";
 import ReserveTable from "./components/ReserveTable/ReserveTable";
 import Login from "./components/Login/Login";
+import Footer from "./components/Footer/Footer";
 
 const AppLayout = () => {
   return (
@@ -18,6 +19,7 @@ const AppLayout = () => {
           <Route path="/login" element={<Login />} />
         </Routes>
       </div>
+      <Footer />
     </Router>
   );
 };

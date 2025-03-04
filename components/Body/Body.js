@@ -674,20 +674,31 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="">
-        <section className="banner -z-50 relative flex flex-col justify-center items-center">
-          <div className="w-[50vw] z-10 text-center">
-            <p className="text-2xl lg:text-6xl font-bold z-10 py-5 text-amber-100">
-              Bite Buddy 🍔
-            </p>
-            <p className="z-10 text-gray-300 text-xl lg:text-4xl">
-              Satisfy Your Cravings, One Bite at a Time!
-            </p>
+      <section className="banner relative flex flex-col justify-center items-center">
+        <div className="w-[50vw] z-10 text-center relative">
+          <p className="text-2xl lg:text-6xl font-bold z-10 py-5 text-amber-100">
+            Bite Buddy 🍔
+          </p>
+          <p className="z-10 text-gray-300 text-xl lg:text-4xl">
+            Satisfy Your Cravings, One Bite at a Time!
+          </p>
+          <div className="mt-5 flex justify-center">
+            <input
+              type="text"
+              name="search"
+              id="search"
+              placeholder="Search your desired restaurants.."
+              className="block w-full max-w-md rounded-md bg-white px-4 py-2 text-base text-gray-900 outline-1 
+        outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 
+        sm:text-sm z-20 relative"
+              onChange={(e) => handleSearch(e.target.value)}
+            />
           </div>
-          <div className="cover absolute top-0 left-0 right-0"></div>
-          <div className="fadeout"></div>
-        </section>
-      </div>
+        </div>
+        <div className="cover"></div>
+        <div className="fadeout"></div>
+      </section>
+
       <div className="topMeals flex flex-row gap-16 justify-evenly mt-6">
         {meals.map((data, index) => (
           <div key={index} className="flex flex-col items-center">
@@ -700,23 +711,6 @@ const Body = () => {
             </span>
           </div>
         ))}
-      </div>
-      <div className="search m-2">
-        <label for="search" class="block text-sm/6 font-medium text-gray-900">
-          Search
-        </label>
-        <div className="mt-2">
-          <input
-            type="text"
-            name="search"
-            id="search"
-            placeholder="Search your desired restaurants.."
-            className="block w-2/12 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1
-             outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 
-             sm:text-sm/6"
-            onChange={(e) => handleSearch(e.target.value)}
-          />
-        </div>
       </div>
       <div className="mt-4 flex justify-start">
         {filteredRestaurants.map((restaurant) => (
