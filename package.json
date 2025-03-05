@@ -10,17 +10,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ShellyCS/BiteBuddy.git"
+    "url": "git+https://github.com/kuldeepsaindane/BiteBuddy.git"
   },
   "keywords": [
     "Food"
   ],
-  "author": "Saily",
+  "author": "Kuldeep",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ShellyCS/BiteBuddy/issues"
+    "url": "https://github.com/kuldeepsaindane/BiteBuddy/issues"
   },
-  "homepage": "https://github.com/ShellyCS/BiteBuddy#readme",
+  "homepage": "https://github.com/kuldeepsaindane/BiteBuddy#readme",
   "devDependencies": {
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
