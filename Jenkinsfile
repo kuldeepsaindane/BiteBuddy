@@ -29,7 +29,9 @@ pipeline {
                         
                         # Source NVM and install Node.js
                         export NVM_DIR="$HOME/.nvm"
-                        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                        if [ -s "$NVM_DIR/nvm.sh" ]; then
+                            . "$NVM_DIR/nvm.sh"  # This is the correct way to source nvm.sh
+                        fi
                         
                         # Install Node.js version 18 (adjust the version if necessary)
                         nvm install 18
