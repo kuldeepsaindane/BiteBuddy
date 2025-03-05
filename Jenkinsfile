@@ -23,6 +23,10 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
+                     // Ensure npm is available
+                    sh 'which npm || curl -sL https://deb.nodesource.com/setup_18.x | bash -'
+                    sh 'sudo apt-get install -y nodejs'
+
                     // Install dependencies with npm
                     sh 'npm install'
                 }
@@ -34,7 +38,7 @@ pipeline {
             steps {
                 script {
                     // Run the app with the necessary start command
-                     sh 'npm start &'
+                     sh 'npm start'
                     // // If you're using Parcel, run:
                     // sh 'parcel index.html &'
 
