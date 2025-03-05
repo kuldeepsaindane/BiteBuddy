@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Get code from a GitHub repository
-                git 'https://github.com/kuldeepsaindane/BiteBuddy.git'
+                git branch: 'main', url: 'https://github.com/kuldeepsaindane/BiteBuddy.git'
             }
         }
         
