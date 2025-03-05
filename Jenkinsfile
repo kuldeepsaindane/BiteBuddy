@@ -19,6 +19,30 @@ pipeline {
             }
         }
 
+         stage('Install Dependencies') {
+            steps {
+                script {
+                    // Install NVM (Node Version Manager) and Node.js
+                    sh '''
+                        # Install NVM (Node Version Manager)
+                        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+                        
+                        # Source NVM and install Node.js
+                        export NVM_DIR="$HOME/.nvm"
+                        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                        
+                        # Install Node.js version 18 (adjust the version if necessary)
+                        nvm install 18
+                        nvm use 18
+                        
+                        # Verify Node.js and npm installation
+                        node -v
+                        npm -v
+                    '''
+                }
+            }
+        }
+
         // Stage for installing dependencies
         stage('Install Dependencies') {
             steps {
