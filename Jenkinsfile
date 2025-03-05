@@ -7,10 +7,15 @@ pipeline {
 
     stages {
         // Stage for checking out the code
+        
+        
         stage('Checkout') {
             steps {
+                retry(3){
+                    git branch: 'main', url: 'https://github.com/kuldeepsaindane/BiteBuddy.git'
+                }
                 // Clone the code from the GitHub repository
-                git 'https://github.com/kuldeepsaindane/BiteBuddy.git'
+                
             }
         }
 
@@ -40,14 +45,6 @@ pipeline {
             }
         }
     }
-    stage('Checkout') {
-        steps {
-            retry(3) {
-                git 'https://github.com/kuldeepsaindane/BiteBuddy.git'
-            }
-        }
-    }
-
 
     post {
         always {
