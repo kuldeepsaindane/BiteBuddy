@@ -23,9 +23,9 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                     // Ensure npm is available
-                    sh 'which npm || curl -sL https://deb.nodesource.com/setup_18.x | bash -'
-                    sh 'apt-get install -y nodejs'
+                    //  // Ensure npm is available
+                    // sh 'which npm || curl -sL https://deb.nodesource.com/setup_18.x | bash -'
+                    // sh 'apt-get install -y nodejs'
 
                     // Install dependencies with npm
                     sh 'npm install'
