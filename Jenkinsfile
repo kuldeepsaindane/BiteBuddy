@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         NODE_HOME = tool name: 'NodeJS', type: 'NodeJS'
-        PATH = "${NODE_HOME}/bin:${env.PATH}"
+        //PATH = "${NODE_HOME}/bin:${env.PATH}"
     }
 
     stages {
@@ -14,18 +14,18 @@ pipeline {
             }
         }
         
-        stage('Node Version') {
-            steps {
-                // Check Node.js and npm versions
-                sh 'node -v'
-                sh 'npm -v'
-            }
-        }
+        // stage('Node Version') {
+        //     steps {
+        //         // Check Node.js and npm versions
+        //         sh 'node -v'
+        //         sh 'npm -v'
+        //     }
+        // }
 
         stage('Install Dependencies') {
             steps {
                 // Install npm dependencies
-                sh 'npm install'
+                sh '${NODE_HOME}/bin/npm install'
             }
         }
         
@@ -33,7 +33,7 @@ pipeline {
             steps {
                 script {
                     // Run the app with the necessary start command
-                    sh 'npm start'
+                    sh '${NODE_HOME}/bin/npm start'
                     // If you're using Parcel, run:
                     // sh 'parcel index.html &'
 
