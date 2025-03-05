@@ -40,6 +40,14 @@ pipeline {
             }
         }
     }
+    stage('Checkout') {
+        steps {
+            retry(3) {
+                git 'https://github.com/kuldeepsaindane/BiteBuddy.git'
+            }
+        }
+    }
+
 
     post {
         always {
