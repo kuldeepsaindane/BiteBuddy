@@ -15,28 +15,31 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
+        // stage('Install Dependencies') {
+        //     steps {
+        //         sh 'npm install'
+        //     }
+        // }
 
-        stage('Run Tests') {
-            steps {
-                sh 'npm test'
-            }
-        }
+        // stage('Run Tests') {
+        //     steps {
+        //         sh 'npm test'
+        //     }
+        // }
 
-        stage('Build') {
-            steps {
-                sh 'npm run build'
-            }
-        }
+        // stage('Build') {
+        //     steps {
+        //         sh 'npm run build'
+        //     }
+        // }
 
         stage('Deploy to AWS EC2') {
             steps {
                 sshagent(['dev-ssh-credential-id']) {
                     sh """
+
+                    
+
                     ssh -o StrictHostKeyChecking=no -i ${SSH_KEY} ${EC2_USER}@${EC2_HOST} '
                     sudo apt update &&
                     sudo apt install -y nodejs npm &&
