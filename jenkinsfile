@@ -1,68 +1,55 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs 'NodeJS'  // This corresponds to the name you gave when configuring NodeJS in Jenkins
-    }
-
     environment {
-        //NODE_HOME = tool name: 'NodeJS', type: 'NodeJS'
-        //PATH = "${NODE_HOME}/bin:${env.PATH}"
-        HOME = "/home/ubuntu"
+        EC2_USER = "ubuntu"
+        EC2_HOST = "10.0.1.93"
+        SSH_KEY = "/var/jenkins_home/.ssh/id_rsa"
+        APP_DIR = "/home/ubuntu/myapp"
     }
- 
 
     stages {
         stage('Clone Repository') {
             steps {
-                // Get code from a GitHub repository
-                git branch: 'main', url: 'https://github.com/kuldeepsaindane/BiteBuddy.git'
+                git branch: 'main', credentialsId: 'github_cred', url: 'https://github.com/kuldeepsaindane/BiteBuddy.git'
             }
         }
-        
+
         stage('Install Dependencies') {
             steps {
-                script {
-                    sh 'npm install'
-                }
+                sh 'npm install'
             }
         }
 
-        stage('Node Version') {
+        stage('Run Tests') {
             steps {
-                script {
-                    // Check Node.js and npm versions
-                    sh 'node -v'
-                    sh 'npm -v'
-                }
+                sh 'npm test'
             }
         }
 
-        stage('Run Test') {
+        stage('Build') {
             steps {
-                script {
-                    sh 'npm test'
-                }
-            }
-        }
-        stage('Build Project') {
-            steps {
-                script {
-                    sh 'npm run build'
-                }
-                
+                sh 'npm run build'
             }
         }
 
-        stage('Deploy Project') {
+        stage('Deploy to AWS EC2') {
             steps {
-                script {
-                    sh 'npm start'
+                sshagent(['dev-ssh-credential-id']) {
+                    sh """
+                    ssh -o StrictHostKeyChecking=no -i ${SSH_KEY} ${EC2_USER}@${EC2_HOST} '
+                    sudo apt update &&
+                    sudo apt install -y nodejs npm &&
+                    mkdir -p ${APP_DIR} &&
+                    cd ${APP_DIR} &&
+                    rm -rf * &&
+                    git clone https://github.com/kuldeepsaindane/BiteBuddy.git . &&
+                    npm install &&
+                    npm start
+                    '
+                    """
                 }
             }
         }
-
     }
 }
-
-
