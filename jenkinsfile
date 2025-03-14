@@ -50,7 +50,7 @@ pipeline {
                         echo "Directory is empty"
                     else
                         echo "Directory is not empty. Removing contents..."
-                        rm -rf ${APP_DIR}/*
+                        #rm -rf ${APP_DIR}/*
                     fi
 
                     cd ${APP_DIR} &&
