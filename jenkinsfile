@@ -45,7 +45,7 @@ pipeline {
                     rm -rf * &&
                     git clone https://github.com/kuldeepsaindane/BiteBuddy.git . &&
                     npm install &&
-                    npm start &
+                    nohup npm start &
                     '
                     """
                 }
