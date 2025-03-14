@@ -45,10 +45,7 @@ pipeline {
                     rm -rf * &&
                     git clone https://github.com/kuldeepsaindane/BiteBuddy.git . &&
                     npm install &&
-                    sudo npm install -g pm2
-                    pm2 start npm --name "bitebuddy" -- start
-
-                    
+                    npm start                    
                     '
                     """
                 }
