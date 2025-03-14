@@ -42,17 +42,18 @@ pipeline {
                     # sudo apt update &&
                     #sudo apt install -y nodejs npm &&
                     mkdir -p ${APP_DIR} &&
-                    cd ${APP_DIR} &&
+                    
                     pwd 
                     ls -l
 
-                    if [ -z "$(ls -A ${APP_DIR})" ]; then
+                    if [ -z "\$(ls -A ${APP_DIR})" ]; then
                         echo "Directory is empty"
                     else
                         echo "Directory is not empty. Removing contents..."
                         rm -rf ${APP_DIR}/*
                     fi
 
+                    cd ${APP_DIR} &&
                     
                     git clone https://github.com/kuldeepsaindane/BiteBuddy.git . &&
                     npm install &&
