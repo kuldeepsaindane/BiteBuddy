@@ -37,9 +37,6 @@ pipeline {
             steps {
                 sshagent(['dev-ssh-credential-id']) {
                     sh """
-
-                    
-
                     ssh -o StrictHostKeyChecking=no -i ${SSH_KEY} ${EC2_USER}@${EC2_HOST} '
                     sudo apt update &&
                     sudo apt install -y nodejs npm &&
@@ -48,7 +45,7 @@ pipeline {
                     rm -rf * &&
                     git clone https://github.com/kuldeepsaindane/BiteBuddy.git . &&
                     npm install &&
-                    npm start
+                    npm start &
                     '
                     """
                 }
