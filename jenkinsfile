@@ -52,8 +52,9 @@ pipeline {
                     
                         git clone https://github.com/kuldeepsaindane/BiteBuddy.git ${APP_DIR} &&
                         cd ${APP_DIR}/BiteBuddy &&
-                        npm install &&
-                        npm start                    
+                        ls -l
+                        #npm install &&
+                        #npm start                    
                     '
                     """
                 }
