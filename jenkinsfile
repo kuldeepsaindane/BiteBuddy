@@ -51,7 +51,7 @@ pipeline {
                         # Clone the repository into the directory
                     
                         git clone https://github.com/kuldeepsaindane/BiteBuddy.git ${APP_DIR} &&
-                        cd ${APP_DIR} &&
+                        cd ${APP_DIR}/BiteBuddy &&
                         npm install &&
                         npm start                    
                     '
