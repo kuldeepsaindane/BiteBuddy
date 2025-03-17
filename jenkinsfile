@@ -1,19 +1,20 @@
 pipeline {
     agent any
 
-    environment {
-        EC2_USER = "ubuntu"
-        EC2_HOST = "3.14.102.55"
-        SSH_KEY = "/var/jenkins_home/.ssh/id_rsa"
-        APP_DIR = "/home/ubuntu/myapp"
-    }
-
     stages {
-        stage('Clone Repository') {
+        // stage('Clone Repository') {
+        //     steps {
+        //         git branch: 'main', credentialsId: 'github_cred', url: 'https://github.com/kuldeepsaindane/BiteBuddy.git'
+        //     }
+        // }
+
+        stage('Checking the Directory') {
             steps {
-                git branch: 'main', credentialsId: 'github_cred', url: 'https://github.com/kuldeepsaindane/BiteBuddy.git'
+                sh 'pwd'
+                sh 'ls -l'
             }
         }
+
 
         // stage('Install Dependencies') {
         //     steps {
@@ -33,32 +34,11 @@ pipeline {
         //     }
         // }
 
-        stage('Deploy to AWS EC2') {
-            steps {
-                sshagent(['dev-ssh-credential-id']) {
-                    sh """
-                    ssh -o StrictHostKeyChecking=no -i ${SSH_KEY} ${EC2_USER}@${EC2_HOST} '
-                    
-                        # Check if the directory exists and remove it if it's not empty
-                        if [ -d "${APP_DIR}" ]; then
-                            echo "Directory ${APP_DIR} already exists. Removing contents..."
-                            rm -rf ${APP_DIR}/*
-                        else
-                            echo "Directory ${APP_DIR} does not exist. Creating it..."
-                            #mkdir -p ${APP_DIR}
-                        fi
-
-                        # Clone the repository into the directory
-                        cd ${APP_DIR}
-                        git clone https://github.com/kuldeepsaindane/BiteBuddy.git &&
-                        cd ${APP_DIR}/BiteBuddy &&
-                        ls -l
-                        #npm install &&
-                        #npm start                    
-                    '
-                    """
-                }
-            }
-        }
+        // stage('Deploy to AWS EC2') {
+        //     steps {
+        //         sh 'sudo rm -rf /var/www/myapp'
+        //         sh 'sudo cp -r ${WORKSPACE}/dist/ /var/www/myapp/'
+        //     }
+        // }
     }
 }
