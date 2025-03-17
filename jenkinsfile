@@ -45,12 +45,12 @@ pipeline {
                             rm -rf ${APP_DIR}/*
                         else
                             echo "Directory ${APP_DIR} does not exist. Creating it..."
-                            mkdir -p ${APP_DIR}
+                            #mkdir -p ${APP_DIR}
                         fi
 
                         # Clone the repository into the directory
-                    
-                        git clone https://github.com/kuldeepsaindane/BiteBuddy.git ${APP_DIR} &&
+                        cd ${APP_DIR}
+                        git clone https://github.com/kuldeepsaindane/BiteBuddy.git &&
                         cd ${APP_DIR}/BiteBuddy &&
                         ls -l
                         #npm install &&
