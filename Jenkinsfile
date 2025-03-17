@@ -14,7 +14,11 @@ pipeline {
                 sh 'ls -l'
             }
         }
-
+        // stage('Install Dependencies') {
+        //     steps {
+        //         sh 'npm install'
+        //     }
+        // }
 
         // stage('Run Tests') {
         //     steps {
