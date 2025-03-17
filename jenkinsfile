@@ -45,7 +45,7 @@ pipeline {
                             rm -rf ${APP_DIR}/*
                         else
                             echo "Directory ${APP_DIR} does not exist. Creating it..."
-                            mkdir -p ${APP_DIR}
+                            sudo mkdir -p ${APP_DIR}
                         fi
 
                         # Clone the repository into the directory
