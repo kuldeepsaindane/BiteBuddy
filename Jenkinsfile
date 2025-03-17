@@ -12,6 +12,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh 'ls -l'
+                sh '${WORKSPACE}'
             }
         }
         // stage('Install Dependencies') {
