@@ -23,34 +23,37 @@ pipeline {
            }
         }
 
-        // stage('Install Dependencies') {
-        //     steps {
-        //         sh 'npm install'
-        //     }
-        // }
+        stage('Install Dependencies') {
+            steps {
+                sh 'echo Installing the Dependencies'
+               // sh 'npm install'
+            }
+        }
 
-        // stage('Checking Dependencies') {
-        //     steps {
-        //         sh 'npm -v'
-        //     }
-        // }
-        // stage('Run Tests') {
-        //     steps {
-        //         sh 'npm test'
-        //     }
-        // }
+        stage('Checking Dependencies') {
+            steps {
+                sh 'echo Checking the Dependencies'
+                //sh 'npm -v'
+            }
+        }
 
-        // stage('Build') {
-        //     steps {
-        //         sh 'npm run build'
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                echo "Building application..."
+               // sh 'npm run build'
+            }
+        }
 
-        // stage('Deploy to AWS EC2') {
-        //     steps {
-        //         sh 'sudo rm -rf /var/www/myapp'
-        //         sh 'sudo cp -r ${WORKSPACE}/dist/ /var/www/myapp/'
-        //     }
-        // }
+        stage('Deploy to AWS EC2') {
+            steps {
+
+                // sh 'sudo rm -rf /var/www/myapp'
+                // sh 'sudo cp -r ${WORKSPACE}/dist/ /var/www/myapp/'
+            }
+        }
+
+
+
+
     }
 }
