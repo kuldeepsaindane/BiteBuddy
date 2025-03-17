@@ -15,34 +15,41 @@ pipeline {
                 sh 'sudo ls ${WORKSPACE}'
             }
         }
-        stage('Install Dependencies') {
+
+        stage('Setting the Repository') {
             steps {
-                sh 'npm install'
-            }
+                sh 'sudo rm -rf /home/ubuntu/myapp'
+                sh 'sudo cp -r ${WORKSPACE}/ /home/ubuntu/myapp/'
+           }
         }
 
-        stage('Checking Dependencies') {
-            steps {
-                sh 'npm -v'
-            }
-        }
+        // stage('Install Dependencies') {
+        //     steps {
+        //         sh 'npm install'
+        //     }
+        // }
+
+        // stage('Checking Dependencies') {
+        //     steps {
+        //         sh 'npm -v'
+        //     }
+        // }
         // stage('Run Tests') {
         //     steps {
         //         sh 'npm test'
         //     }
         // }
 
-        stage('Build') {
-            steps {
-                sh 'npm run build'
-            }
-        }
+        // stage('Build') {
+        //     steps {
+        //         sh 'npm run build'
+        //     }
+        // }
 
         // stage('Deploy to AWS EC2') {
         //     steps {
         //         sh 'sudo rm -rf /var/www/myapp'
         //         sh 'sudo cp -r ${WORKSPACE}/dist/ /var/www/myapp/'
-
         //     }
         // }
     }
