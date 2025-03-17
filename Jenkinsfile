@@ -12,7 +12,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh 'ls -l'
-                sh '${WORKSPACE}'
+                sh 'sudo ls ${WORKSPACE}'
             }
         }
         // stage('Install Dependencies') {
