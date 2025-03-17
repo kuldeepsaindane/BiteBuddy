@@ -46,14 +46,10 @@ pipeline {
 
         stage('Deploy to AWS EC2') {
             steps {
-
+                sh "echo Deploy the Application "
                 // sh 'sudo rm -rf /var/www/myapp'
                 // sh 'sudo cp -r ${WORKSPACE}/dist/ /var/www/myapp/'
             }
         }
-
-
-
-
     }
 }
