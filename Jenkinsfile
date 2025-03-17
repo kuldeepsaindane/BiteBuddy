@@ -15,12 +15,17 @@ pipeline {
                 sh 'sudo ls ${WORKSPACE}'
             }
         }
-        // stage('Install Dependencies') {
-        //     steps {
-        //         sh 'npm install'
-        //     }
-        // }
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
 
+        stage('Checking Dependencies') {
+            steps {
+                sh 'npm -v'
+            }
+        }
         // stage('Run Tests') {
         //     steps {
         //         sh 'npm test'
