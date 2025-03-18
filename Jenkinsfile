@@ -1,6 +1,19 @@
 pipeline {
     agent any
 
+     environment {
+        AWS_REGION = 'us-east-1'
+        AWS_ACCOUNT_ID = '314146332315'
+        REPO_NAME = 'BiteBuddy'
+        IMAGE_TAG = 'latest'
+        SSH_PRIVATE_KEY_PATH = "/var/jenkins_home/.ssh/jenkins-key.pem"
+        SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/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"
+        
+        // Define IPs for both environments
+        DEV_SERVER_IP = "44.212.29.69"
+        QA_SERVER_IP = "34.203.216.166"
+    }
+
     stages {
         // stage('Clone Repository') {
         //     steps {
@@ -55,12 +68,12 @@ pipeline {
 
     post {
         success {
-            slackSend channel: 'team2', 
-            message: "Deployement Successfull for Review...!: ${env.JOB_NAME}"
+            slackSend channel: 'slack-notification', 
+            message: "✅ *Build SUCCESS* : Deployement Successfull for Review...!: \\n*Job:* ${env.JOB_NAME}"
         }
         failure {
-            slackSend channel: 'team2',
-            message: "Deployment Failed: ${env.JOB_NAME}"
+            slackSend channel: 'slack-notification',
+            message: "❌ *Build FAILED*❗: Deployment Failed: \\n*Job:* ${env.JOB_NAME}"
         }
     }
 }
