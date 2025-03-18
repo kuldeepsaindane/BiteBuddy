@@ -68,11 +68,11 @@ pipeline {
 
     post {
         success {
-            slackSend channel: 'slack-notification', 
+            slackSend channel: 'team2', 
             message: "✅ Build SUCCESS : Deployement Successfull for Review...!: Job: ${env.JOB_NAME}"
         }
         failure {
-            slackSend channel: 'slack-notification',
+            slackSend channel: 'team2',
             message: "❌ Build FAILED : Deployment Failed: Job: ${env.JOB_NAME}"
         }
     }
