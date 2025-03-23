@@ -69,17 +69,17 @@ pipeline {
     post {
         success {
             slackSend channel: 'team2', 
-            message: """✅ Build SUCCESS : Deployement Successfull!
-                    Environment : DEV
-                    Job: ${env.JOB_NAME}
-                    Status: SUCCESS """
+            message: """✅ *Build SUCCESS:* Deployement Successfull!
+                    *Environment:* DEV
+                    *Job:* ${env.JOB_NAME}
+                    *Status:* SUCCESS """
         }
         failure {
             slackSend channel: 'team2',
-            message: """❌ Build FAILED: Deployment Failed! 
-                    Environment: DEV
-                    Job: ${env.JOB_NAME}
-                    Status: FAILURE """
+            message: """❌ *Build FAILED:* Deployment Failed! 
+                    *Environment:* DEV
+                    *Job:* ${env.JOB_NAME}
+                    *Status:* FAILURE """
         }
     }
 
