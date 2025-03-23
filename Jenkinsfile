@@ -69,11 +69,42 @@ pipeline {
     post {
         success {
             slackSend channel: 'team2', 
-            message: "✅ Build SUCCESS : Deployement Successfull for Review...!: Job: ${env.JOB_NAME}"
+            message: """✅ Build SUCCESS : Deployement Successfull!
+                    Environment : DEV
+                    Job: ${env.JOB_NAME}
+                    Status: SUCCESS """
         }
         failure {
             slackSend channel: 'team2',
-            message: "❌ Build FAILED : Deployment Failed: Job: ${env.JOB_NAME}"
+            message: """❌ Build FAILED: Deployment Failed! 
+                    Environment: DEV
+                    Job: ${env.JOB_NAME}
+                    Status: FAILURE """
         }
     }
+
+    // //✅ Slack Notifications
+    // post {
+    //     success {
+    //         script {
+    //             sh """
+    //             curl -X POST -H 'Content-type: application/json' --data '{
+    //                 "text": "✅ *Build SUCCESS* 🚀\\n*Environment:* ${params.DEPLOY_ENV} \\n*Job:* ${JOB_NAME} \\n*Build Number:* ${BUILD_NUMBER} \\n*Status:* SUCCESS ✅\\n*Server:* http://${EC2_PUBLIC_IP}/"
+    //             }' ${SLACK_WEBHOOK_URL}
+    //             """
+    //         }
+    //     }
+    //     failure {
+    //         script {
+    //             sh """
+    //             curl -X POST -H 'Content-type: application/json' --data '{
+    //                 "text": "❌ *Build FAILED* ❗\\n*Environment:* ${params.DEPLOY_ENV} \\n*Job:* ${JOB_NAME} \\n*Build Number:* ${BUILD_NUMBER} \\n*Status:* FAILED ❌\\nCheck Jenkins Logs for more details."
+    //             }' ${SLACK_WEBHOOK_URL}
+    //             """
+    //         }
+    //     }
+    // }
+
+
+
 }
