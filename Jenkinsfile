@@ -25,14 +25,14 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh 'ls -l'
-                sh 'sudo ls ${WORKSPACE}'
+                sh 'ls ${WORKSPACE}'
             }
         }
 
         stage('Setting the Repository') {
             steps {
-                sh 'sudo rm -rf /home/ubuntu/myapp'
-                sh 'sudo cp -r ${WORKSPACE}/ /home/ubuntu/myapp/'
+                sh 'rm -rf /home/ubuntu/myapp'
+                sh 'cp -r ${WORKSPACE}/ /home/ubuntu/myapp/'
            }
         }
 
