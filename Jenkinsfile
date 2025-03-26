@@ -10,8 +10,8 @@ pipeline {
         SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/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"
         
         // Define IPs for both environments
-        DEV_SERVER_IP = "44.212.29.69"
-        QA_SERVER_IP = "34.203.216.166"
+        DEV_SERVER_IP = "18.218.76.240"
+        QA_SERVER_IP = "10.0.2.242"
     }
 
     stages {
@@ -57,7 +57,15 @@ pipeline {
             }
         }
 
-        stage('Deploy to AWS EC2') {
+        stage('Deploy to AWS EC2 - Dev') {
+            steps {
+                sh "echo Deploy the Application "
+                // sh 'sudo rm -rf /var/www/myapp'
+                // sh 'sudo cp -r ${WORKSPACE}/dist/ /var/www/myapp/'
+            }
+        }
+
+        stage('Deploy to AWS EC2 - QA') {
             steps {
                 sh "echo Deploy the Application "
                 // sh 'sudo rm -rf /var/www/myapp'
@@ -68,18 +76,34 @@ pipeline {
 
     post {
         success {
+            // Send Slack message for Dev Deployment Success
             slackSend channel: 'team2', 
-            message: """✅ *Build SUCCESS:* Deployement Successfull!
+            message: """✅ *Build SUCCESS:* Deployement DEV Successfull!
                     *Environment:* DEV
+                    *Job:* ${env.JOB_NAME}
+                    *Status:* SUCCESS 
+                    *Access at:* http:/18.218.76.240:3000 """
+            
+            // Send Slack message for QA Deployment Success
+            slackSend channel: 'team2', 
+            message: """✅ *Build SUCCESS:* Deployment to QA successful!
+                    *Environment:* QA
                     *Job:* ${env.JOB_NAME}
                     *Status:* SUCCESS """
         }
         failure {
             slackSend channel: 'team2',
-            message: """❌ *Build FAILED:* Deployment Failed! 
+            message: """❌ *Build FAILED:* Deployment to DEV Failed! 
                     *Environment:* DEV
                     *Job:* ${env.JOB_NAME}
                     *Status:* FAILURE """
+
+            // Send Slack message for QA Deployment Failure
+            slackSend channel: 'team2',
+            message: """❌ *Build FAILED:* Deployment to QA failed! 
+                    *Environment:* QA
+                    *Job:* ${env.JOB_NAME}
+                    *Status:* FAILURE """        
         }
     }
 
