@@ -31,7 +31,7 @@ pipeline {
 
         stage('Setting the Repository') {
             steps {
-                sh 'rm -rf /home/ubuntu/myapp'
+                sh 'sudo rm -rf /home/ubuntu/myapp'
                 sh 'cp -r ${WORKSPACE}/ /home/ubuntu/myapp/'
            }
         }
