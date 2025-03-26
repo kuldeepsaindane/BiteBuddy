@@ -26,13 +26,15 @@ pipeline {
                 sh 'pwd'
                 sh 'ls -l'
                 sh 'ls ${WORKSPACE}'
+                sh 'sleep 5'
             }
         }
 
         stage('Setting the Repository') {
             steps {
-                sh 'sudo rm -rf /home/ubuntu/myapp'
-                sh 'cp -r ${WORKSPACE}/ /home/ubuntu/myapp/'
+                // sh 'sudo rm -rf /home/ubuntu/myapp'
+                // sh 'cp -r ${WORKSPACE}/ /home/ubuntu/myapp/'
+                sh 'sleep 10'
            }
         }
 
@@ -40,6 +42,7 @@ pipeline {
             steps {
                 sh 'echo Installing the Dependencies'
                // sh 'npm install'
+               sh 'sleep 10'
             }
         }
 
@@ -54,6 +57,7 @@ pipeline {
             steps {
                 echo "Building application..."
                // sh 'npm run build'
+               sh 'sleep 10'
             }
         }
 
@@ -62,6 +66,7 @@ pipeline {
                 sh "echo Deploy the Application "
                 // sh 'sudo rm -rf /var/www/myapp'
                 // sh 'sudo cp -r ${WORKSPACE}/dist/ /var/www/myapp/'
+                sh 'sleep 10'
             }
         }
 
