@@ -87,7 +87,7 @@ pipeline {
             //         *Environment:* DEV
             //         *Job:* ${env.JOB_NAME}
             //         *Status:* SUCCESS 
-            //         *Access at:* http:/18.218.76.240:3000 """
+            //         *Access at:* http:/18.218.76.240:5173 """
             
             Send Slack message for QA Deployment Success
             slackSend channel: 'team2', 
