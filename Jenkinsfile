@@ -47,13 +47,6 @@ pipeline {
             }
         }
 
-        stage('Build Docker Images') {
-            steps {
-                sh 'echo Build Docker Images'
-                //sh 'npm -v'
-            }
-        }
-
         stage('Set Deploy Server') {
             steps {
                 sh 'echo Set Deploy Server...'
