@@ -15,11 +15,11 @@ pipeline {
     }
 
     stages {
-        // stage('Clone Repository') {
-        //     steps {
-        //         git branch: 'main', credentialsId: 'github_cred', url: 'https://github.com/kuldeepsaindane/BiteBuddy.git'
-        //     }
-        // }
+         stage('Checkout - Clone Repository') {
+             steps {
+                 git branch: 'main', credentialsId: 'github_cred', url: 'https://github.com/kuldeepsaindane/BiteBuddy.git'
+             }
+         }
 
         stage('Checking the Directory'){
             steps {
@@ -30,51 +30,44 @@ pipeline {
             }
         }
 
-        stage('Setting the Repository') {
+        stage('Build Docker Images') {
             steps {
+                sh 'echo Build Docker Images'
                 // sh 'sudo rm -rf /home/ubuntu/myapp'
                 // sh 'cp -r ${WORKSPACE}/ /home/ubuntu/myapp/'
-                sh 'sleep 10'
+                sh 'sleep 5'
            }
         }
 
-        stage('Install Dependencies') {
+        stage('Tag & Push Image to ECR') {
             steps {
-                sh 'echo Installing the Dependencies'
+                sh 'echo Tag & Push Image to ECR'
                // sh 'npm install'
-               sh 'sleep 10'
+               sh 'sleep 5'
             }
         }
 
-        stage('Checking Dependencies') {
+        stage('Build Docker Images') {
             steps {
-                sh 'echo Checking the Dependencies'
+                sh 'echo Build Docker Images'
                 //sh 'npm -v'
             }
         }
 
-        stage('Build') {
+        stage('Set Deploy Server') {
             steps {
-                echo "Building application..."
+                sh 'echo Set Deploy Server...'
                // sh 'npm run build'
-               sh 'sleep 10'
+               sh 'sleep 1'
             }
         }
 
-        stage('Deploy to AWS EC2 - Dev') {
+        stage('Remote Deploy to EC2') {
             steps {
-                sh "echo Deploy the Application "
+                sh "echo Remote Deploy to EC2 "
                 // sh 'sudo rm -rf /var/www/myapp'
                 // sh 'sudo cp -r ${WORKSPACE}/dist/ /var/www/myapp/'
-                sh 'sleep 10'
-            }
-        }
-
-        stage('Deploy to AWS EC2 - QA') {
-            steps {
-                sh "echo Deploy the Application "
-                // sh 'sudo rm -rf /var/www/myapp'
-                // sh 'sudo cp -r ${WORKSPACE}/dist/ /var/www/myapp/'
+                sh 'sleep 5'
             }
         }
     }
@@ -82,19 +75,19 @@ pipeline {
     post {
         success {
             // Send Slack message for Dev Deployment Success
-            // slackSend channel: 'team2', 
-            // message: """✅ *Build SUCCESS:* Deployement DEV Successfull!
-            //         *Environment:* DEV
-            //         *Job:* ${env.JOB_NAME}
-            //         *Status:* SUCCESS 
-            //         *Access at:* http:/18.218.76.240:5173 """
+            slackSend channel: 'team2', 
+            message: """✅ *Build SUCCESS:* Deployement DEV Successfull!
+                    *Environment:* DEV
+                    *Job:* ${env.JOB_NAME}
+                    *Status:* SUCCESS 
+                    *Access at:* http:/18.218.76.240:3000 """
             
             // Send Slack message for QA Deployment Success
-            slackSend channel: 'team2', 
-            message: """✅ *Build SUCCESS:* Deployment to QA successful!
-                    *Environment:* QA
-                    *Job:* ${env.JOB_NAME}
-                    *Status:* SUCCESS """
+            // slackSend channel: 'team2', 
+            // message: """✅ *Build SUCCESS:* Deployment to QA successful!
+            //         *Environment:* QA
+            //         *Job:* ${env.JOB_NAME}
+            //         *Status:* SUCCESS """
         }
         failure {
             slackSend channel: 'team2',
