@@ -41,7 +41,9 @@ pipeline {
 
         stage('Tag & Push Image to ECR') {
             steps {
-                sh 'echo Tag & Push Image to ECR'
+                //echo 'Tag'
+                //echo 'Push Image to ECR'
+               // sh 'echo Tag & Push Image to ECR'
                // sh 'npm install'
                sh 'sleep 5'
             }
