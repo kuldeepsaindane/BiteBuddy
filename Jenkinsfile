@@ -89,7 +89,7 @@ pipeline {
             //         *Status:* SUCCESS 
             //         *Access at:* http:/18.218.76.240:5173 """
             
-            Send Slack message for QA Deployment Success
+            // Send Slack message for QA Deployment Success
             slackSend channel: 'team2', 
             message: """✅ *Build SUCCESS:* Deployment to QA successful!
                     *Environment:* QA
