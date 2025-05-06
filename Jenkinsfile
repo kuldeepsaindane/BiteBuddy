@@ -70,7 +70,7 @@ pipeline {
     post {
         success {
             // Send Slack message for Dev Deployment Success
-            slackSend channel: 'team2', 
+            //slackSend channel: 'team2', 
             //message: """✅ *Build SUCCESS:* Deployement DEV Successfull!
             //        *Environment:* DEV
             //        *Job:* ${env.JOB_NAME}
