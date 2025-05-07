@@ -70,19 +70,19 @@ pipeline {
     post {
         success {
             // Send Slack message for Dev Deployment Success
-            //slackSend channel: 'team2', 
-            //message: """✅ *Build SUCCESS:* Deployement DEV Successfull!
-            //        *Environment:* DEV
-            //        *Job:* ${env.JOB_NAME}
-            //        *Status:* SUCCESS 
-            //        *Access at:* http:/18.218.76.240:3000 """
+            slackSend channel: 'team2', 
+            message: """✅ *Build SUCCESS:* Deployement DEV Successfull!
+                    *Environment:* DEV
+                    *Job:* ${env.JOB_NAME}
+                    *Status:* SUCCESS 
+                    *Access at:* http:/18.218.76.240:3000 """
             
             // Send Slack message for QA Deployment Success
-             slackSend channel: 'team2', 
-             message: """✅ *Build SUCCESS:* Deployment to QA successful!
-                     *Environment:* QA
-                     *Job:* ${env.JOB_NAME}
-                     *Status:* SUCCESS """
+             //slackSend channel: 'team2', 
+             //message: """✅ *Build SUCCESS:* Deployment to QA successful!
+             //        *Environment:* QA
+             //        *Job:* ${env.JOB_NAME}
+             //        *Status:* SUCCESS """
         }
         failure {
             slackSend channel: 'team2',
