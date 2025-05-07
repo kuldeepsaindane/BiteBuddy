@@ -62,7 +62,7 @@ pipeline {
                 sh "echo Remote Deploy to EC2 "
                 // sh 'sudo rm -rf /var/www/myapp'
                 // sh 'sudo cp -r ${WORKSPACE}/dist/ /var/www/myapp/'
-                sh 'sleep 5'
+                
             }
         }
     }
