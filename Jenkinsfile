@@ -26,7 +26,7 @@ pipeline {
                 sh 'pwd'
                 sh 'ls -l'
                 sh 'ls ${WORKSPACE}'
-                sh 'sleep 5'
+                
             }
         }
 
